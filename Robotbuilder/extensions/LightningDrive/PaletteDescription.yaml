@@ -1,0 +1,16 @@
+!Component
+  name: LightningDrive
+  type: Subsystem
+  supports: {Sensor: -1, Actuator: -1, Controller: -1, PIDSource: -1, PIDOutput: -1}
+  help: Lightning closed loop drive subsystem
+  properties:
+    - !ConstantsProperty
+      name: Constants
+      default: []
+    - !TypeSelectionProperty
+      name: Default Command
+      type: Command
+      default: None
+    - !Parameters
+      name: Default command parameters
+

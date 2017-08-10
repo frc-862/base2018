@@ -1,0 +1,22 @@
+!Component
+  name: LightningDrive2
+  type: Controller
+  supports: {PIDOutput: 2}
+  help: Lightning closed loop drive subsystem
+  properties:
+    - !ChildSelectionProperty
+      name: Left Motor
+      type: PIDOutput
+      validators: [RobotDrive2, ChildDropdownSelected]
+      default: 0
+    - !BooleanProperty
+      name: Left Motor Inverted
+      default: false
+    - !ChildSelectionProperty
+      name: Right Motor
+      type: PIDOutput
+      validators: [RobotDrive2, ChildDropdownSelected]
+      default: 0
+    - !BooleanProperty
+      name: Right Motor Inverted
+      default: false

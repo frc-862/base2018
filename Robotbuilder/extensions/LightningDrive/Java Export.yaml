@@ -1,0 +1,8 @@
+LightningDrive:
+  Defaults: "None"
+  Export: "Robot"
+  Import: "import ${package}.subsystems.*;"
+  Declaration: "public static #class($Short_Name) #variable($Short_Name);"
+  Construction: "#variable($Short_Name) = new #class($Short_Name)();"
+  ClassName: "LightningDriveSubsystem"
+

@@ -1,0 +1,6 @@
+LightningDrive2:
+  Defaults: "Component,None"
+  ClassName: "LightningDrive"
+  Construction: "#variable($Name).reset(new ${ClassName}(#variable($Left_Motor), #variable($Right_Motor)));"
+  LiveWindow: "lw->AddActuator(\"$Subsystem\", \"$Short_Name\", #variable($Name));"
+  Import: "\\#include \"lightning_drive.h\""
