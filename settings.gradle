@@ -1,0 +1,2 @@
+def projectName = 'Lightning2018'
+rootProject.name = projectName

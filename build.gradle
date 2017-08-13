@@ -1,0 +1,45 @@
+plugins {
+    id "java" // for compiling Java code
+    id "eclipse" // for autogenerating Eclipse projects
+    id "idea" // for autogenerating IntelliJ projects
+    id "jaci.openrio.gradle.GradleRIO" version "2017.1.5" // for deploy / robot lib management
+}
+
+frc {
+    team = "862"
+    robotClass = "org.usfirst.frc862.base2018.Robot"
+
+    // Uncomment if you want a remote debugger. Haven't tested, probably cool though.
+    // useDebugCommand = true
+}
+
+wpi { // Specify the versions of the libraries to use. From GradleRIO
+    wpilibVersion = "2017.3.+"
+    navxVersion = "3.0.+"
+    talonSrxVersion = "4.4.1.+"
+}
+
+dependencies {
+    compile wpilib()
+    compile talonSrx()
+    compile navx()
+
+    // Add everything in the libs folder so that we can add our own libraries
+    compile fileTree(dir: "libs", include: "**/*.jar")
+    
+    // Native code
+    nativeLib fileTree(dir: "libs", include: "**/*.so")
+}
+
+jar {
+    // Not sure why this is needed. It was in the GradleRIO example so I will keep it
+    from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    
+    // Specify info required for the output Jar to be executable
+    manifest {
+        attributes(
+            "Main-Class": "edu.wpi.first.wpilibj.RobotBase",
+            "Robot-Class": frc.robotClass
+        )
+    }
+}
