@@ -19,6 +19,10 @@ wpi { // Specify the versions of the libraries to use. From GradleRIO
     talonSrxVersion = "4.4.1.+"
 }
 
+configurations {
+    robotBuilder // Define a custom config for RobotBuilder so it can have its own dependencies independent from compile
+}
+
 dependencies {
     compile wpilib()
     compile talonSrx()
@@ -29,10 +33,12 @@ dependencies {
     
     // Native code
     nativeLib fileTree(dir: "libs", include: "**/*.so")
+
+    robotBuilder "edu.wpi.first.wpilib:RobotBuilder:2.0.+"
 }
 
 jar {
-    // Not sure why this is needed. It was in the GradleRIO example so I will keep it
+    // Fat jar with all the libs
     from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
     
     // Specify info required for the output Jar to be executable
@@ -42,4 +48,9 @@ jar {
             "Robot-Class": frc.robotClass
         )
     }
+}
+
+task robotBuilder(type: JavaExec) {
+    main = "robotbuilder.RobotBuilder"
+    classpath configurations.robotBuilder
 }

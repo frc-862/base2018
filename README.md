@@ -24,5 +24,5 @@ After that, you should be able to open the project in your IDE.
 
 ## Other useful gradle tasks
 
-Some other useful gradle tasks are `restart_rio_code` and `determine_rio_address`.
+Some other useful gradle tasks are `robotBuilder`, `restart_rio_code`, and `determine_rio_address`.
 To run without an internet connection, append `--offline` to your gradle command.
