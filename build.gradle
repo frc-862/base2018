@@ -37,6 +37,14 @@ dependencies {
     robotBuilder "edu.wpi.first.wpilib:RobotBuilder:2.0.+"
 }
 
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src']
+        }
+    }
+}
+
 jar {
     // Fat jar with all the libs
     from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
